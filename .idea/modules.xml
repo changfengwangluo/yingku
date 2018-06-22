@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../bootstrap4/.idea/bootstrap4.iml" filepath="$PROJECT_DIR$/../bootstrap4/.idea/bootstrap4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mxonline/.idea/mxonline.iml" filepath="$PROJECT_DIR$/../mxonline/.idea/mxonline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../stu/.idea/stu.iml" filepath="$PROJECT_DIR$/../stu/.idea/stu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../vueshop/.idea/vueshop.iml" filepath="$PROJECT_DIR$/../vueshop/.idea/vueshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/yingku.iml" filepath="$PROJECT_DIR$/.idea/yingku.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/yingku.iml" filepath="$PROJECT_DIR$/.idea/yingku.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../zhanku/.idea/zhanku.iml" filepath="$PROJECT_DIR$/../zhanku/.idea/zhanku.iml" />
+    </modules>
+  </component>
+</project>

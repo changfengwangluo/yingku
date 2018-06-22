@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for lb in lunbo %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ lb.id }}"></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for lb in lunbo %}
+                <div class="carousel-item {% if lb.id == 1 %} active {% endif %}">
+                    <img class="d-block w-100" src="{{ MEDIA_URL }}{{ lb.img }}" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ lb.title }}</h5>
+                        <p>{{ lb.desc }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="text-center my-2"><h2>新片速递</h2></div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center my-2"><h2>排行榜</h2></div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top img-thumbnail img-fluid" src="{% static 'img/film/fengmian.jpg' %}"
+                         alt="Card image cap">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mr-auto">
+                                <h5 class="card-title">钢铁侠(2008)<span class="badge badge-light text-danger">9.0</span>
+                                </h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

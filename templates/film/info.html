@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">首页</a></li>
+                        <li class="breadcrumb-item"><a href="#">影库</a></li>
+                        <li class="breadcrumb-item"><a href="#">科幻</a></li>
+                    </ol>
+                </nav>
+                <h1>钢铁侠3 (2013) <span>Iron Man 3</span></h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/film/fengmian.jpg' %}" class="img-fluid img-thumbnail"
+                             alt="Responsive image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-info">别名：GangTieXia导演：山猪</a>
+                            <a href="#" class="list-group-item list-group-item-action list-group-item-primary">豆瓣评分：9.8IMDB评分：8.9</a>
+                        </div>
+                        <h2 class="mt-2">钢铁侠简介</h2>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                   aria-controls="home" aria-selected="true">中文版</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                                   aria-controls="profile" aria-selected="false">英文版</a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                如果提前了解了你要面对的人生，你是否还会有勇气前来？吴岭澜、沈光耀、王敏佳、陈鹏、张果果，几个年轻人满怀诸多渴望，在四个非同凡响的时空中一路前行。他们在最好的年纪迎来了最残酷的考验，并成就了永不褪色的青春传奇。
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                If you know your life ahead of time, will you have the courage to come? Wu Linglan, Shen
+                                Guangyao, Wang Minjia, Chen Peng, Zhang Guo Guo, a few young people, full of many
+                                aspirations, are moving forward in four extraordinary space-time. At the best age, they
+                                ushered in the cruelest test and achieved the never failing youth legend.
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>钢铁侠详细资料</h2>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>中文名：钢铁侠</td>
+                        <td>英文名：Iron Man</td>
+                        <td>译名：钢铁人、铁人、铁甲奇侠</td>
+                    </tr>
+                    <tr>
+                        <td>类型：动作/冒险/科幻</td>
+                        <td>导演：乔恩·费儒</td>
+                        <td>制片人：凯文·费奇</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">主演：小罗伯特·唐尼，格温妮斯·帕特洛，泰伦斯·霍华德，杰夫·布里吉斯</td>
+                    </tr>
+                    <tr>
+                        <td>出品时间：2018年</td>
+                        <td>出品公司：漫威电影工作室</td>
+                        <td>片长：126分钟</td>
+                    </tr>
+                    <tr>
+                        <td>发行公司：派拉蒙影业公司</td>
+                        <td colspan="2">上映时间：2008年5月2日(美国)、2008年4月30日（中国大陆）</td>
+
+                    </tr>
+                    <tr>
+                        <td>制片地区：美国</td>
+                        <td>制片地区：1.40亿美元（估）</td>
+                        <td>票房：585,174,222美元</td>
+                    </tr>
+                    <tr>
+                        <td>分级：美国：PG-13</td>
+                        <td>拍摄地点：美国加利福尼亚州</td>
+                        <td>拍摄日期：2007年3月12日-2007年6月25日</td>
+                    </tr>
+                    <tr>
+                        <td>对白语言：英语、乌尔都语、波斯语、阿拉伯语、匈牙利语</td>
+                        <td>色彩：彩色</td>
+                        <td>IMDB编码：tt0371746</td>
+                    </tr>
+                    <tr>
+                        <td>编剧：艾特·马库姆、马特·霍洛维等</td>
+                        <td colspan="2">主要奖项：土星奖-最佳科幻电影等</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h2><a href="">钢铁侠演员表</a></h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="media">
+                            <img class="mr-3" src="{% static 'img/user/head.jpeg' %}" alt="Generic placeholder image"
+                                 width="50" height="50">
+                            <div class="media-body">
+                                <h5 class="mt-0"><a href="">山猪</a></h5>
+                                <h6>饰：钢铁侠</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="media">
+                            <img class="mr-3" src="{% static 'img/user/head.jpeg' %}" alt="Generic placeholder image"
+                                 width="50" height="50">
+                            <div class="media-body">
+                                <h5 class="mt-0"><a href="">山猪</a></h5>
+                                <h6>饰：钢铁侠</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="media">
+                            <img class="mr-3" src="{% static 'img/user/head.jpeg' %}" alt="Generic placeholder image"
+                                 width="50" height="50">
+                            <div class="media-body">
+                                <h5 class="mt-0"><a href="">山猪</a></h5>
+                                <h6>饰：钢铁侠</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="media">
+                            <img class="mr-3" src="{% static 'img/user/head.jpeg' %}" alt="Generic placeholder image"
+                                 width="50" height="50">
+                            <div class="media-body">
+                                <h5 class="mt-0"><a href="">山猪</a></h5>
+                                <h6>饰：钢铁侠</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2><a href="">钢铁侠影评</a></h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">什么时候开始，中国电影经不起一点批评？</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">
+                                    中国电影市场，是好，还是不好？
+
+                                    截至到2017年8月6日实时票房，《战狼2》累计票房31.09亿，超越《美人鱼》在2016年创下的33.9亿的中国内地总票房记录，咫尺之遥。</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">美分的水军注定敌不过14亿人民群众的眼睛</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">电影的原型是2015年的也门撤侨事件
+                                    2015年也门危机，中国海军直接派出2艘054A护卫舰，开进也门亚丁港
+                                    由于当时港口外枪炮轰鸣，中国海军入港全部自主完成</p>
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>钢铁侠视频</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img class="card-img-top" src="{% static 'img/film/fengmian.jpg' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <h2>钢铁侠剧照</h2>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/film/fengmian.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>钢铁侠海报</h2>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{% static 'img/film/fengmian.jpg' %}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h2>钢铁侠微评</h2>
+                <form action="">
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <div class="input-group-prepend">
+                            <button class="btn btn-info">提交评论</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <div class="media">
+                    <img class="mr-3" src="{% static 'img/user/head.jpeg' %}" alt="Generic placeholder image" width="50"
+                         height="50">
+                    <div class="media-body">
+                        <h5 class="mt-0"><a href="">山猪</a>
+                            <small class="ml-5 text-muted">2018-06-25</small>
+                        </h5>
+                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
+                        purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                        vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    </div>
+                </div>
+                <hr>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-3">
+                <h2>钢铁侠同类电影</h2>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Cras justo odio
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Dapibus ac facilisis in
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Morbi leo risus
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
