@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'person',
     'article',
     'comment',
+    'music',
     # ckeditor
     'ckeditor',
     'ckeditor_uploader',
@@ -147,3 +148,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 配置ckeditor
 CKEDITOR_UPLOAD_PATH = 'upload/'
+
+#修改默认用户模型
+AUTH_USER_MODEL='users.UserProfile'
+
+

@@ -1,10 +1,6 @@
-import imdb
+li=['a','b','c']
 
+s=','.join(li)
 
-ia=imdb.IMDb()
-m=ia.get_movie('0371746')
-r=ia.get_movie_reviews('0371746')
-
-
-print(r)
-
+new_li=s.split(',')
+print(new_li)
