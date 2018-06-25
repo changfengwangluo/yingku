@@ -2,7 +2,7 @@
 import scrapy
 import html2text
 from film import models as FM
-
+import re
 from extend.googletranslate import Translate
 from scrapy.selector import Selector
 
@@ -65,17 +65,17 @@ class ImdbSpider(scrapy.Spider):
             '//div[@id="titleDetails"]/div[@class="txt-block"]/a[contains(@href,"primary_language")]/text()').extract()  # 对白语言
         duibai = ','.join(duibai_list)
         # 如果已经存在会报错，需要处理
-        FM.Info.objects.create(
-            ename=ename,
-            name=name,
-            imdb_fen=imdb_fen,
-            year=year,
-            jibie=jibie,
-            shichang=shichang,
-            category=category,
-            guojia=guojia,
-            duibai=duibai,
-        )
+        # FM.Info.objects.create(
+        #     ename=ename,
+        #     name=name,
+        #     imdb_fen=imdb_fen,
+        #     year=year,
+        #     jibie=jibie,
+        #     shichang=shichang,
+        #     category=category,
+        #     guojia=guojia,
+        #     duibai=duibai,
+        # )
         # 摘要+剧情;meta携带参数
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/plotsummary', callback=self.plotsummary,
         # meta={'film_name': name})
@@ -84,8 +84,8 @@ class ImdbSpider(scrapy.Spider):
         # meta={'film_name': name})
 
         # 译名+发布国家/日期--ok
-        #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/releaseinfo', callback=self.releaseinfo,
-                             #meta={'film_name': name})
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/releaseinfo', callback=self.releaseinfo,
+        # meta={'film_name': name})
 
         ##整个制作团队（导演，编剧，演员……）
         yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/fullcredits', callback=self.fullcredits,
@@ -152,6 +152,72 @@ class ImdbSpider(scrapy.Spider):
                 )
 
     # 整个制作团队（导演，编剧，演员……）
-    def fullcredits(self):
+    def fullcredits(self, response):
+        film_name = response.meta['film_name']
+        category_tuple = FM.YanZhiYuan.CG  # 演职人员分类
+        for category in category_tuple:
+            if category[0] == 'zy':
+                flag = 'Cast'  # 主演
+            elif category[0] == 'qy':
+                flag = 'Rest of cast'  # 其他演员
+            elif category[0] == 'dy':
+                flag = 'Directed'  # 导演
+            elif category[0] == 'bj':
+                flag = 'Writing Credits'  # 编剧
+            elif category[0] == 'zp':
+                flag = 'Produced by'  # 制片人
+            elif category[0] == 'ms':
+                flag = 'Music by'  # 音乐
+            elif category[0] == 'sy':
+                flag = 'Cinematography by'  # 摄影
+            elif category[0] == 'jj':
+                flag = 'Film Editing by'  # 剪辑
+            elif category[0] == 'tx':
+                flag = 'Casting By'  # 角色挑选
+            elif category[0] == 'zp':
+                flag = 'Production Design'  # 制片设计
+            elif category[0] == 'hz':
+                flag = 'Makeup Department'  # 化妆
+            elif category[0] == 'sc':
+                flag = 'Production Management'  # 生产管理
+            elif category[0] == 'zl':
+                flag = 'Second Unit Director'  # 助理导演
+            elif category[0] == 'ad':
+                flag = 'Art Department'  # 美术
+            elif category[0] == 'yx':
+                flag = 'Sound Department'  # 音效
+            elif category[0] == 'tx':
+                flag = 'Special Effects'  # 特效
+            elif category[0] == 'sj':
+                flag = 'Visual Effects'  # 视觉
+            elif category[0] == 'tj':
+                flag = 'Stunts'  # 特技
+            elif category[0] == 'dj':
+                flag = 'Electrical Department'  # 道具场工
+            elif category[0] == 'dh':
+                flag = 'Animation Department'  # 动画
+            elif category[0] == 'dp':
+                flag = 'Casting Department'  # 底片冲印
+            elif category[0] == 'fz':
+                flag = 'Costume and Wardrobe'  # 服装管理
+            elif category[0] == 'zb':
+                flag = 'Editorial Department'  # 编辑助理
+            elif category[0] == 'cj':
+                flag = 'Location Management'  # 场景管理
+            elif category[0] == 'md':
+                flag = 'Music Department'  # 音乐部门
+            elif category[0] == 'ys':
+                flag = 'Transportation Department'  # 底片运送
+            elif category[0] == 'qt':
+                flag = 'Other crew'  # 其他职员
 
-        pass
+            xpath_text = '//h4[contains(text(),"%s")]/following-sibling::table[1]/tbody/tr/td/a/text()' % flag
+            person_list = response.xpath(xpath_text).extract()
+            for li in person_list:
+                li = re.sub('\n', '', li)
+                FM.YanZhiYuan.objects.create(
+                    film=film_name,
+                    ename=li,
+                    category=category[0],
+                )
+            #主演和其他演员需要单独处理
