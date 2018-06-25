@@ -2,52 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="66b33e12-a063-43bb-bd30-bf1476fd49d5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/comment/adminx.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/music/adminx.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/article/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/article/migrations/0002_auto_20180618_1138.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/article/migrations/0003_auto_20180618_1333.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/article/migrations/0004_huaxuinfo_keywords_yingxuninfo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/article/migrations/0005_auto_20180619_2250.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/article/models.py" afterPath="$PROJECT_DIR$/article/models.py" />
-      <change beforePath="$PROJECT_DIR$/comment/__init__.py" afterPath="$PROJECT_DIR$/comment/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/comment/apps.py" afterPath="$PROJECT_DIR$/comment/apps.py" />
-      <change beforePath="$PROJECT_DIR$/comment/models.py" afterPath="$PROJECT_DIR$/comment/models.py" />
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/film/adminx.py" afterPath="$PROJECT_DIR$/film/adminx.py" />
       <change beforePath="$PROJECT_DIR$/film/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0002_auto_20180618_1008.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0003_auto_20180618_1056.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0004_auto_20180618_1104.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0005_auto_20180618_1110.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0006_auto_20180618_1114.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0007_auto_20180618_1126.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0008_auto_20180618_1330.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0009_auto_20180618_1348.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0010_auto_20180618_1356.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0011_auto_20180619_2249.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0012_zhaiyao.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0013_auto_20180622_1959.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0014_auto_20180622_2018.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0015_auto_20180622_2024.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/film/migrations/0016_auto_20180622_2140.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/film/migrations/0002_auto_20180623_2203.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/film/migrations/0003_auto_20180623_2225.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/film/migrations/0004_auto_20180623_2247.py" afterPath="" />
       <change beforePath="$PROJECT_DIR$/film/models.py" afterPath="$PROJECT_DIR$/film/models.py" />
-      <change beforePath="$PROJECT_DIR$/music/__init__.py" afterPath="$PROJECT_DIR$/music/__init__.py" />
-      <change beforePath="$PROJECT_DIR$/music/apps.py" afterPath="$PROJECT_DIR$/music/apps.py" />
-      <change beforePath="$PROJECT_DIR$/music/models.py" afterPath="$PROJECT_DIR$/music/models.py" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0001_initial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0002_lunbo_url.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0003_auto_20180618_1150.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0004_auto_20180618_1205.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0005_link.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/index/migrations/0006_auto_20180618_1348.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/music/migrations/0001_initial.py" afterPath="" />
       <change beforePath="$PROJECT_DIR$/person/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/person/migrations/0002_auto_20180618_1330.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/person/migrations/0003_auto_20180618_1348.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/person/migrations/0004_auto_20180619_2249.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/person/models.py" afterPath="$PROJECT_DIR$/person/models.py" />
-      <change beforePath="$PROJECT_DIR$/robot/robot/settings.py" afterPath="$PROJECT_DIR$/robot/robot/settings.py" />
       <change beforePath="$PROJECT_DIR$/robot/robot/spiders/imdb.py" afterPath="$PROJECT_DIR$/robot/robot/spiders/imdb.py" />
-      <change beforePath="$PROJECT_DIR$/stu.py" afterPath="$PROJECT_DIR$/stu.py" />
-      <change beforePath="$PROJECT_DIR$/users/adminx.py" afterPath="$PROJECT_DIR$/users/adminx.py" />
       <change beforePath="$PROJECT_DIR$/users/migrations/0001_initial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/users/migrations/0002_auto_20180618_1335.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" afterPath="$PROJECT_DIR$/users/models.py" />
-      <change beforePath="$PROJECT_DIR$/yingku/settings.py" afterPath="$PROJECT_DIR$/yingku/settings.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -57,7 +30,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/yingku$imdb.coverage" NAME="imdb Coverage Results" MODIFIED="1529768267656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
+    <SUITE FILE_PATH="coverage/yingku$imdb.coverage" NAME="imdb Coverage Results" MODIFIED="1529895152637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
     <SUITE FILE_PATH="coverage/yingku$hkmdb.coverage" NAME="hkmdb Coverage Results" MODIFIED="1525587503363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
     <SUITE FILE_PATH="coverage/yingku$stu.coverage" NAME="stu Coverage Results" MODIFIED="1529758543506" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/yingku$yingkuRobot.coverage" NAME="cctv Coverage Results" MODIFIED="1525356839737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/robot" />
@@ -92,13 +65,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="imdb.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="imdb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robot/robot/spiders/imdb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="116" column="57" lean-forward="true" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
+            <state relative-caret-position="328">
+              <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
-                <element signature="e#4688#5098#0" expanded="false" />
+                <element signature="e#24#37#0" expanded="true" />
+                <element signature="e#4652#5062#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -107,8 +81,8 @@
       <file leaf-file-name="query.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/django/db/models/query.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="477" column="75" lean-forward="true" selection-start-line="477" selection-start-column="75" selection-end-line="477" selection-end-column="75" />
+            <state relative-caret-position="8172">
+              <caret line="477" column="75" lean-forward="false" selection-start-line="477" selection-start-column="75" selection-end-line="477" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -117,20 +91,32 @@
       <file leaf-file-name="task.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/twisted/internet/task.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
+            <state relative-caret-position="9306">
               <caret line="517" column="0" lean-forward="false" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/film/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="154" column="29" lean-forward="true" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
+            <state relative-caret-position="360">
+              <caret line="287" column="24" lean-forward="true" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="adminx.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/film/adminx.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="63" column="39" lean-forward="false" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,7 +125,7 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/robot/robot/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
+            <state relative-caret-position="900">
               <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
               <folding>
                 <element signature="e#416#425#0" expanded="true" />
@@ -161,18 +147,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/article/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/music/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="486">
+              <caret line="31" column="74" lean-forward="false" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -181,8 +157,8 @@
       <file leaf-file-name="stu.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="90">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -191,7 +167,7 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/comment/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
+            <state relative-caret-position="54">
               <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -214,13 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>32</find>
-      <find>debug</find>
-      <find>zhanku</find>
-      <find>zhanku.wsgi</find>
-      <find>context_processors</find>
-      <find>web</find>
-      <find>title</find>
       <find>LOG_LEVEL</find>
       <find>收获</find>
       <find>page</find>
@@ -244,6 +213,13 @@
       <find>yanyuan</find>
       <find>语言</find>
       <find>user</find>
+      <find>Shanging</find>
+      <find>上映时间</find>
+      <find>YiMing</find>
+      <find>YanYuan</find>
+      <find>unique</find>
+      <find>角色</find>
+      <find>shangying</find>
     </findStrings>
     <replaceStrings>
       <replace>收货</replace>
@@ -285,7 +261,6 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/index/models.py" />
         <option value="$PROJECT_DIR$/image/models.py" />
-        <option value="$PROJECT_DIR$/film/adminx.py" />
         <option value="$PROJECT_DIR$/robot/robot/items.py" />
         <option value="$PROJECT_DIR$/article/adminx.py" />
         <option value="$PROJECT_DIR$/extend/GoogleTK.py" />
@@ -305,10 +280,11 @@
         <option value="$PROJECT_DIR$/music/adminx.py" />
         <option value="$PROJECT_DIR$/music/models.py" />
         <option value="$PROJECT_DIR$/stu.py" />
-        <option value="$PROJECT_DIR$/film/models.py" />
         <option value="$PROJECT_DIR$/article/models.py" />
         <option value="$PROJECT_DIR$/robot/robot/settings.py" />
+        <option value="$PROJECT_DIR$/film/adminx.py" />
         <option value="$PROJECT_DIR$/robot/robot/spiders/imdb.py" />
+        <option value="$PROJECT_DIR$/film/models.py" />
       </list>
     </option>
   </component>
@@ -343,7 +319,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -354,12 +329,13 @@
             <path>
               <item name="yingku" type="b2602c69:ProjectViewProjectNode" />
               <item name="yingku" type="462c0819:PsiDirectoryNode" />
-              <item name="article" type="462c0819:PsiDirectoryNode" />
+              <item name="film" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="yingku" type="b2602c69:ProjectViewProjectNode" />
               <item name="yingku" type="462c0819:PsiDirectoryNode" />
               <item name="film" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="yingku" type="b2602c69:ProjectViewProjectNode" />
@@ -383,6 +359,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -812,23 +789,21 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
-    <editor active="true" />
+    <frame x="109" y="77" width="1366" height="706" extended-state="6" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33218786" sideWeight="0.18663101" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33215547" sideWeight="0.18663101" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25429553" sideWeight="0.8882353" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957748" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769832" sideWeight="0.49572194" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25429553" sideWeight="0.8882353" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35967928" sideWeight="0.52299464" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.105347596" sideWeight="0.49568433" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35828876" sideWeight="0.52299464" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10714286" sideWeight="0.49568433" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32994652" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30481285" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875144" sideWeight="0.49572194" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39750445" sideWeight="0.813369" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1" sideWeight="0.5043157" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33218786" sideWeight="0.813369" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -836,6 +811,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32912844" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Concurrent Activities Diagram" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875144" sideWeight="0.49572194" order="8" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -865,7 +841,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="191" />
+      <option name="time" value="197" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -959,22 +935,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/image/models.py" />
-    <entry file="file://$PROJECT_DIR$/film/adminx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-          <caret line="14" column="47" lean-forward="false" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-          <caret line="15" column="45" lean-forward="false" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/imdb/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32494">
-          <caret line="1489" column="0" lean-forward="false" selection-start-line="1489" selection-start-column="0" selection-end-line="1489" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/imdb/utils.py" />
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1025,9 +986,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,7 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1110,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="8" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,9 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
           <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1136,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="15" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1144,9 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1154,9 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#13#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1170,15 +1116,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/music/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="198">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/comment/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
+        <state relative-caret-position="54">
           <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -1188,49 +1134,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="90">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/django/db/models/query.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="477" column="75" lean-forward="true" selection-start-line="477" selection-start-column="75" selection-end-line="477" selection-end-column="75" />
+        <state relative-caret-position="8172">
+          <caret line="477" column="75" lean-forward="false" selection-start-line="477" selection-start-column="75" selection-end-line="477" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/yingkuEnv/lib/python3.6/site-packages/twisted/internet/task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
+        <state relative-caret-position="9306">
           <caret line="517" column="0" lean-forward="false" selection-start-line="517" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/film/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="154" column="29" lean-forward="true" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/article/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="31" column="74" lean-forward="true" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
+        <state relative-caret-position="486">
+          <caret line="31" column="74" lean-forward="false" selection-start-line="31" selection-start-column="74" selection-end-line="31" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/robot/robot/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
+        <state relative-caret-position="900">
           <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
           <folding>
             <element signature="e#416#425#0" expanded="true" />
@@ -1246,12 +1182,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/film/adminx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="63" column="39" lean-forward="false" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/robot/robot/spiders/imdb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="116" column="57" lean-forward="true" selection-start-line="116" selection-start-column="57" selection-end-line="116" selection-end-column="57" />
+        <state relative-caret-position="328">
+          <caret line="155" column="0" lean-forward="false" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding>
-            <element signature="e#4688#5098#0" expanded="false" />
+            <element signature="e#24#37#0" expanded="true" />
+            <element signature="e#4652#5062#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/film/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="287" column="24" lean-forward="true" selection-start-line="287" selection-start-column="24" selection-end-line="287" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

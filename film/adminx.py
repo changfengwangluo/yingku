@@ -1,5 +1,5 @@
 import xadmin
-from .models import Category,Info,Role,HonorCategory,Honor,Show,PiaoFang
+from .models import Category,Info,Role,HonorCategory,Honor,PiaoFang,ShangYing,GuoJia,YiMing
 
 class CategoryAdmin(object):
     list_display = ['name']
@@ -41,13 +41,6 @@ class HonorAdmin(object):
 
 xadmin.site.register(Honor,HonorAdmin)
 
-class ShowAdmin(object):
-    list_display = ['time']
-    search_fields = ['time']
-    list_filter = ['time']
-
-xadmin.site.register(Show,ShowAdmin)
-
 class PiaoFangAdmin(object):
     list_display = ['num']
     search_fields = ['num']
@@ -55,4 +48,25 @@ class PiaoFangAdmin(object):
 
 xadmin.site.register(PiaoFang,PiaoFangAdmin)
 
+class ShangYingAdmin(object):
+    list_display = ['film','guojia','chengshi','shijian']
+    search_fields = ['film','guojia','chengshi','shijian']
+    list_filter = ['film','guojia','chengshi','shijian']
+
+xadmin.site.register(ShangYing,ShangYingAdmin)
+
+
+class GuoJiaAdmin(object):
+    list_display = ['film','name']
+    search_fields = ['film','name']
+    list_filter = ['film','name']
+
+xadmin.site.register(GuoJia,GuoJiaAdmin)
+
+class YiMingAdmin(object):
+    list_display = ['film','guojia','name']
+    search_fields = ['film','guojia','name']
+    list_filter = ['film','guojia','name']
+
+xadmin.site.register(YiMing,YiMingAdmin)
 
