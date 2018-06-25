@@ -286,3 +286,47 @@ class YiShu(models.Model):
 
     def __str__(self):
         return self.name
+
+#布景师
+class BuJingShi(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    name = models.CharField(verbose_name='中文名', max_length=255,default='')
+    ename = models.CharField(verbose_name='英文名', max_length=255,default='')
+    shenfen = models.CharField(verbose_name='身份', max_length=255,default='')
+
+    class Meta:
+        verbose_name = '布景师'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+
+#服装设计
+class FuZhuang(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    name = models.CharField(verbose_name='中文名', max_length=255,default='')
+    ename = models.CharField(verbose_name='英文名', max_length=255,default='')
+    shenfen = models.CharField(verbose_name='身份', max_length=255,default='')
+
+    class Meta:
+        verbose_name = '服装设计'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+#化妆
+class HuaZhuang(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    name = models.CharField(verbose_name='中文名', max_length=255,default='')
+    ename = models.CharField(verbose_name='英文名', max_length=255,default='')
+    shenfen = models.CharField(verbose_name='身份', max_length=255,default='')
+
+    class Meta:
+        verbose_name = '化妆'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
