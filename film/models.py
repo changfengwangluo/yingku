@@ -165,8 +165,7 @@ class YiMing(models.Model):
 class YanZhiYuan(models.Model):
     #演职人员身份
     CG=(
-        ('zy','主演'),#Cast (in credits order) verified as complete 主要演员
-        ('qy','其他演员'),#Rest of cast listed alphabetically #其他演员
+        ('yy','主演'),#Cast (in credits order) verified as complete 主要演员|Rest of cast listed alphabetically其他演员
         ('dy','导演'),#Directed
         ('bj','编剧'),#Writing Credits
         ('zp','制片人'),#Produced

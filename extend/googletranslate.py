@@ -51,16 +51,34 @@ class Translate:
         return self.js.call("TL", text)
 
     # http请求翻译
-    def translate(self, text):
+    def translate_get(self, text):
         headers = {
-            'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36'
+            'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36',
+            'Connection': 'close',
+            'Referer': 'https://translate.google.cn/',
+            'x-client-data': 'CK61yQEIi7bJAQiltskBCKmdygEInp/KAQioo8oBCKKkygE=',
         }
         tk = self.getTk(text)
         r = requests.get(
-            'https://translate.google.cn/translate_a/single?client=t&sl=en&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&source=bh&ssel=0&tsel=0&kc=1&tk=%s&q=%s' % (
-                tk, text), headers=headers)
+            'https://translate.google.cn/translate_a/single?client=t&sl=en&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&ie=UTF-8&oe=UTF-8&otf=2&ssel=0&tsel=0&kc=1&tk=%s&q=%s' % (
+                tk, text), headers=headers, timeout=10, verify=False)
         r.encoding = 'UTF-8'
+
         return r.json()  # 返回一个list列表，r.text返回一个str不好处理
+
+    def translate_post(self, text):
+
+        tk = self.getTk(text=text)
+        url = 'https://translate.googleapis.com/translate_a/t?anno=3&client=te_lib&format=html&v=1.0&key=AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw&logld=vTE_20170911_00&sl=auto&tl=zh-CN&sp=nmt&tc=5&sr=1&tk=%s&mode=1' % tk
+        data = 'q=%s' % text
+        headers = {
+            'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36',
+            'Connection': 'close',
+        }
+        r = requests.post(url=url, data=data, headers=headers, timeout=10)
+        result = r.text
+        
+        return result
 
     # google返回的翻译结果很复杂阿，需要提取提取出翻译结果。
     def extract(self, trans_list):
@@ -81,12 +99,12 @@ class Translate:
             # 遍历段落进行翻译
             for s in str_list:
                 if s != '':
-                    trans_list = self.translate(s)  # 返回的是一个列表
+                    trans_list = self.translate_post(s)  # 返回的是一个列表
                     part = self.extract(trans_list)
                     result += part + '\n'  # 组合成文章
 
         else:
-            trans_list = self.translate(text)
+            trans_list = self.translate_post(text)
             result = self.extract(trans_list)
 
         return result

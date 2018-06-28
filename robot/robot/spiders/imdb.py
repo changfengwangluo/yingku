@@ -7,6 +7,7 @@ from extend.googletranslate import Translate
 from scrapy.selector import Selector
 
 
+
 class ImdbSpider(scrapy.Spider):
     name = 'imdb'
     allowed_domains = ['imdb.com']
@@ -156,10 +157,8 @@ class ImdbSpider(scrapy.Spider):
         film_name = response.meta['film_name']
         category_tuple = FM.YanZhiYuan.CG  # 演职人员分类
         for category in category_tuple:
-            if category[0] == 'zy':
-                flag = 'Cast'  # 主演
-            elif category[0] == 'qy':
-                flag = 'Rest of cast'  # 其他演员
+            if category[0] == 'yy':
+                flag = 'Cast'  # 演员
             elif category[0] == 'dy':
                 flag = 'Directed'  # 导演
             elif category[0] == 'bj':
@@ -211,13 +210,43 @@ class ImdbSpider(scrapy.Spider):
             elif category[0] == 'qt':
                 flag = 'Other crew'  # 其他职员
 
-            xpath_text = '//h4[contains(text(),"%s")]/following-sibling::table[1]/tbody/tr/td/a/text()' % flag
+            if category[0] == 'yy':
+                xpath_text = '//h4[@id="cast"]/following-sibling::table[1]/tr'
+            else:
+                xpath_text = '//h4[contains(text(),"%s")]/following-sibling::table[1]/tbody/tr' % flag
+            # /td/a/text()
             person_list = response.xpath(xpath_text).extract()
             for li in person_list:
-                li = re.sub('\n', '', li)
-                FM.YanZhiYuan.objects.create(
-                    film=film_name,
-                    ename=li,
-                    category=category[0],
-                )
-            #主演和其他演员需要单独处理
+                if category[0] == 'yy':
+                    image_url = Selector(text=li).xpath('//td[@class="primary_photo"]/a/img/@loadlate').extract_first()
+                    if image_url is None:
+                        image_url = Selector(text=li).xpath(
+                            '//td[@class="primary_photo"]/a/img/@src').extract_first()
+                    ename = Selector(text=li).xpath('//td[@class="itemprop"]/a/span/text()').extract_first()
+                    # 已超链接存在地情况
+                    beizhu = Selector(text=li).xpath('//td[@class="character"]/a/text()').extract_first()  # 获取一个就好了。
+                    if beizhu is None:
+                        beizhu = Selector(text=li).xpath('//td[@class="character"]/text()').extract_first()  # 直接获取备注名
+                        if beizhu is not None:
+                            beizhu = re.sub('\n', '', beizhu).lstrip().rstrip()
+                else:
+                    ename = Selector(text=li).xpath('//td[@class="name"]/a/text()').extract_first()
+                    beizhu = Selector(text=li).xpath('//td[@class="credit"]/text()').extract_first()
+                    if beizhu is None:
+                        beizhu = ''
+
+                if ename is not None:
+                    # ename=re.sub('\s','·',ename)#Gwyneth Paltrow替换成这样Gwyneth·Paltrow便于翻译
+
+                    trans=Translate()
+                    name=trans.getResult(ename)
+
+                    FM.YanZhiYuan.objects.create(
+                        name=name,
+                        film=film_name,
+                        ename=ename,
+                        category=category[0],
+                        image=image_url,
+                        beizhu=beizhu
+                    )
+            # 主演和其他演员需要单独处理

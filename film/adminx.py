@@ -71,8 +71,8 @@ class YiMingAdmin(object):
 xadmin.site.register(YiMing,YiMingAdmin)
 
 class YanZhiYuanAdmin(object):
-    list_display = ['name','ename','category','film']
-    search_fields = ['name','ename','category','film']
-    list_filter = ['name','ename','category','film']
+    list_display = ['name','ename','category','film','beizhu']
+    search_fields = ['name','ename','category','film','beizhu']
+    list_filter = ['name','ename','category','film','beizhu']
 
 xadmin.site.register(YanZhiYuan,YanZhiYuanAdmin)
