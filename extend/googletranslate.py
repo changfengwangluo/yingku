@@ -1,5 +1,6 @@
 import execjs
 import requests
+import re
 
 
 class Translate:
@@ -75,13 +76,16 @@ class Translate:
             'User-Agent': 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36',
             'Connection': 'close',
         }
-        r = requests.post(url=url, data=data, headers=headers, timeout=10)
-        result = r.text
-        
+        try:
+            r = requests.post(url=url, data=data, headers=headers, timeout=10)
+            result = r.text
+        except requests.exceptions.ReadTimeout:
+            result = ''
+
         return result
 
     # google返回的翻译结果很复杂阿，需要提取提取出翻译结果。
-    def extract(self, trans_list):
+    def extract_get(self, trans_list):
         if len(trans_list) > 0:
             temp_list = trans_list[0]  # 也是一个list，其中包含了一个段落
             part = ''
@@ -89,6 +93,14 @@ class Translate:
                 if temp[0] is not None:
                     part += temp[0]  # 组合成段落
         return part
+
+    def extract_post(self, trans_list):
+        li = re.findall('\["(.*?)",".*?"\]', trans_list)
+        if len(li) > 0:
+            trans_str = li[0]
+        else:
+            trans_str = ''
+        return trans_str
 
     # google翻译每一次请求是有字数限制的，是5000个字符，保险一点规定4000个为一段
     def getResult(self, text):
@@ -105,6 +117,6 @@ class Translate:
 
         else:
             trans_list = self.translate_post(text)
-            result = self.extract(trans_list)
+            result = self.extract_post(trans_list)
 
         return result

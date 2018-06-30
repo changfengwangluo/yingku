@@ -1,6 +1,6 @@
 import requests
 from extend.googletranslate import Translate
-
+import re
 def translate(text):
     trans=Translate()
     tk = trans.getTk(text=text)
@@ -13,4 +13,7 @@ def translate(text):
     r = requests.post(url=url, data=data,headers=headers,timeout=10)
     result = r.text
     return result
+
+text=translate('hello')
+
 
