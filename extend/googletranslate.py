@@ -102,8 +102,9 @@ class Translate:
             trans_str = ''
         return trans_str
 
+    # 根据整行或者段落翻译
     # google翻译每一次请求是有字数限制的，是5000个字符，保险一点规定4000个为一段
-    def getResult(self, text):
+    def getResultByLines(self, text):
         result = ''
         str_len = len(text)
         if str_len > 4000:
@@ -120,3 +121,18 @@ class Translate:
             result = self.extract_post(trans_list)
 
         return result
+
+    # 根据一些零散的文字组合凑齐5000个字符的限制，组合在一起翻译后再返回，这样减少翻译的次数，减少限制
+    # 约定词组之间的分割符为换行符号
+    def getResultByWords(self, text):
+        trans_str = ''
+        while True:
+            positon = 0
+            index = text.find('\n', positon)
+            split_str = text[0:index]
+            if len(split_str) > 4000:
+                temp_trans_str = self.translate_post(split_str)
+                trans_str += temp_trans_str
+            else:
+                trans_str = self.translate_post(text)
+            return trans_str
