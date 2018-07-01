@@ -3,9 +3,9 @@ import scrapy
 import html2text
 from film import models as FM
 import re
-from extend.googletranslate import Translate
+from extend.googletranslate import Translate as GGTrans
+from extend.baidutranslate import Translate as BDTrans
 from scrapy.selector import Selector
-
 
 
 class ImdbSpider(scrapy.Spider):
@@ -42,12 +42,12 @@ class ImdbSpider(scrapy.Spider):
     # bilibili = models.TextField(verbose_name='bilibili地址', default='')
     # aiqiyi = models.TextField(verbose_name='爱奇艺', default='')
 
-    translate = Translate()
+    ggTrans = GGTrans()
 
     def parse(self, response):
 
         ename = response.xpath('//h1/text()').extract_first()  # 英文名
-        name = self.translate.getResult(ename)  # 中文名
+        name = self.ggTrans.getResultPostByLines(ename)  # 中文名
 
         imdb_fen = float(response.xpath('//span[@itemprop="ratingValue"]/text()').extract_first())  # imdb评分
 
@@ -236,11 +236,13 @@ class ImdbSpider(scrapy.Spider):
                         beizhu = ''
 
                 if ename is not None:
-                    # ename=re.sub('\s','·',ename)#Gwyneth Paltrow替换成这样Gwyneth·Paltrow便于翻译
+                    #ename=re.sub('\s','·',ename)#Gwyneth Paltrow替换成这样Gwyneth·Paltrow便于翻译
 
-                    trans=Translate()
-                    name=trans.getResult(ename)
-
+                    ggTrans = GGTrans()
+                    name = ggTrans.getResultPostByLines(ename)
+                    if name == ename or name == '':  # google翻译过来仍然是一样地情况下，调用百度进行翻译
+                        bdTrans = BDTrans()
+                        name = bdTrans.getResultByPhone(text=ename)
                     FM.YanZhiYuan.objects.create(
                         name=name,
                         film=film_name,

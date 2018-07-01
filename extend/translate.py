@@ -2,20 +2,18 @@ import execjs
 import requests
 import re
 
-
-class Translate:
-
+class GGTranslate:
     def __init__(self):
         self.js = execjs.compile("""
     function TL(a) { 
         var k = ""; 
         var b = 406644; 
         var b1 = 3293161072; 
-         
+
         var jd = "."; 
         var $b = "+-a^+6"; 
         var Zb = "+-3^+b+-f"; 
-     
+
         for (var e = [], f = 0, g = 0; g < a.length; g++) { 
             var m = a.charCodeAt(g); 
             128 > m ? e[f++] = m : (2048 > m ? e[f++] = m >> 6 | 192 : (55296 == (m & 64512) && g + 1 < a.length && 56320 == (a.charCodeAt(g + 1) & 64512) ? (m = 65536 + ((m & 1023) << 10) + (a.charCodeAt(++g) & 1023), 
@@ -33,7 +31,7 @@ class Translate:
         a %= 1E6; 
         return a.toString() + jd + (a ^ b) 
     }; 
-     
+
     function RL(a, b) { 
         var t = "a"; 
         var Yb = "+"; 
@@ -109,7 +107,7 @@ class Translate:
 
     # 根据整行或者段落翻译
     # google翻译每一次请求是有字数限制的，是5000个字符，保险一点规定4000个为一段
-    #post方式
+    # post方式
     def getResultPostByLines(self, text):
         result = ''
         str_len = len(text)
@@ -126,6 +124,7 @@ class Translate:
             trans_list = self.translate_post(text)
             result = self.extract_post(trans_list)
         return result
+
     def getResultGetByLines(self, text):
         result = ''
         str_len = len(text)
@@ -159,3 +158,23 @@ class Translate:
         else:
             trans_str = self.translate_post(text)
         return trans_str
+
+class BDTranslate:
+    # 通过手机协议进行翻译
+    def getResultByPhone(self, text):
+        url = 'http://fanyi.baidu.com/basetrans'
+        data = {
+            'from': 'en',
+            'to': 'zh',
+            'query': text,
+        }
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1',
+        }
+        r = requests.post(url=url, data=data, headers=headers)
+        json_data = json.loads(r.content.decode())
+        result = json_data['trans'][0]['dst']
+        return result
+
+class Translate(GGTranslate,BDTranslate):
+    pass
