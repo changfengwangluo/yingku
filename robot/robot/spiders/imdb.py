@@ -3,8 +3,6 @@ import scrapy
 import html2text
 from film import models as FM
 import re
-from extend.googletranslate import Translate as GGTrans
-from extend.baidutranslate import Translate as BDTrans
 from scrapy.selector import Selector
 
 
@@ -42,12 +40,9 @@ class ImdbSpider(scrapy.Spider):
     # bilibili = models.TextField(verbose_name='bilibili地址', default='')
     # aiqiyi = models.TextField(verbose_name='爱奇艺', default='')
 
-    ggTrans = GGTrans()
-
     def parse(self, response):
 
         ename = response.xpath('//h1/text()').extract_first()  # 英文名
-        name = self.ggTrans.getResultPostByLines(ename)  # 中文名
 
         imdb_fen = float(response.xpath('//span[@itemprop="ratingValue"]/text()').extract_first())  # imdb评分
 
@@ -77,20 +72,26 @@ class ImdbSpider(scrapy.Spider):
         #     guojia=guojia,
         #     duibai=duibai,
         # )
-        # 摘要+剧情;meta携带参数
+
+        # 摘要+剧情;meta携带参数--ok
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/plotsummary', callback=self.plotsummary,
-        # meta={'film_name': name})
-        # 导演+演员+编剧==
-        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/fullcredits', callback=self.plotsummary,
-        # meta={'film_name': name})
+        # meta={'film_name': ename})
 
         # 译名+发布国家/日期--ok
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/releaseinfo', callback=self.releaseinfo,
-        # meta={'film_name': name})
+        # meta={'film_name': ename})
 
-        ##整个制作团队（导演，编剧，演员……）
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/fullcredits', callback=self.fullcredits,
-                             meta={'film_name': name})
+        ##整个制作团队（导演，编剧，演员……--ok
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/fullcredits', callback=self.fullcredits,
+        # meta={'film_name': ename})
+
+        # 拍摄地+拍摄日期--ok
+        #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/locations', callback=self.locations,
+                             #meta={'film_name': ename})
+
+        # 穿帮
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/goofs', callback=self.locations,
+                             meta={'film_name': ename})
 
     # 逐个翻译电影分类，返回一个带格式的字符串
     def trans_category(self, category_list):
@@ -106,11 +107,35 @@ class ImdbSpider(scrapy.Spider):
             trans_list.append(category_name)
 
         return ','.join(trans_list)
-
     # 摘要+剧情
     def plotsummary(self, response):
-        pass
+        film_name = response.meta['film_name']
+        zy_list = response.xpath(
+            '//ul[@id="plot-summaries-content"]/li[@class="ipl-zebra-list__item"]/p/text()').extract()
+        for li in zy_list:
+            FM.ZhaiYao.objects.create(
+                film=film_name,
+                content=li,
+            )
+        juqing = response.xpath('//ul[@id="plot-synopsis-content"]/li[@class="ipl-zebra-list__item"]').extract_first()
+        juqing = html2text.html2text(juqing)
+        FM.Info.objects.filter(ename=film_name).update(juqing=juqing)
+    #拍摄地+日期
+    def locations(self,response):
+        film_name = response.meta['film_name']
+        psd_list=response.xpath('//section[@id="filming_locations"]/div[contains(@class,"soda")]').extract()
+        for li in psd_list:
+            address=Selector(text=li).xpath('//dt/a/text()').extract_first()
+            changjing=Selector(text=li).xpath('//dd/text()').extract_first()
 
+            FM.PaiSheDi.objects.create(
+                film=film_name,
+                address=address,
+                changjing=changjing,
+            )
+
+        paisheriqi=response.xpath('//section[@id="filming_dates"]/ul/li/text()').extract_first()
+        FM.Info.objects.filter(ename=film_name).update(paisheriqi=paisheriqi)
     # 译名+发布国家/日期
     def releaseinfo(self, response):
         film_name = response.meta['film_name']
@@ -151,7 +176,6 @@ class ImdbSpider(scrapy.Spider):
                     guojia=guojia,
                     name=yiming,
                 )
-
     # 整个制作团队（导演，编剧，演员……）
     def fullcredits(self, response):
         film_name = response.meta['film_name']
@@ -236,19 +260,15 @@ class ImdbSpider(scrapy.Spider):
                         beizhu = ''
 
                 if ename is not None:
-                    #ename=re.sub('\s','·',ename)#Gwyneth Paltrow替换成这样Gwyneth·Paltrow便于翻译
-
-                    ggTrans = GGTrans()
-                    name = ggTrans.getResultPostByLines(ename)
-                    if name == ename or name == '':  # google翻译过来仍然是一样地情况下，调用百度进行翻译
-                        bdTrans = BDTrans()
-                        name = bdTrans.getResultByPhone(text=ename)
                     FM.YanZhiYuan.objects.create(
-                        name=name,
                         film=film_name,
                         ename=ename,
                         category=category[0],
                         image=image_url,
                         beizhu=beizhu
                     )
-            # 主演和其他演员需要单独处理
+
+    #穿帮镜头
+    def goofs(self,response):
+
+        pass

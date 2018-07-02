@@ -1,5 +1,5 @@
 import xadmin
-from .models import Category,Info,Role,HonorCategory,Honor,PiaoFang,ShangYing,GuoJia,YiMing,YanZhiYuan
+from .models import Category,Info,Role,HonorCategory,Honor,PiaoFang,ShangYing,GuoJia,YiMing,YanZhiYuan,ZhaiYao,PaiSheDi,ChuanBang
 
 class CategoryAdmin(object):
     list_display = ['name']
@@ -71,8 +71,31 @@ class YiMingAdmin(object):
 xadmin.site.register(YiMing,YiMingAdmin)
 
 class YanZhiYuanAdmin(object):
-    list_display = ['name','ename','category','film','beizhu']
-    search_fields = ['name','ename','category','film','beizhu']
-    list_filter = ['name','ename','category','film','beizhu']
+    list_display = ['name','ename','category','film','beizhu','image']
+    search_fields = ['name','ename','category','film','beizhu','image']
+    list_filter = ['name','ename','category','film','beizhu','image']
 
 xadmin.site.register(YanZhiYuan,YanZhiYuanAdmin)
+
+class ZhaiYaoAdmin(object):
+    list_display = ['film','content']
+    search_fields = ['film','content']
+    list_filter = ['film','content']
+
+xadmin.site.register(ZhaiYao,ZhaiYaoAdmin)
+
+
+class PaiSheDiAdmin(object):
+    list_display = ['film','address','changjing']
+    search_fields = ['film','address','changjing']
+    list_filter = ['film','address','changjing']
+
+xadmin.site.register(PaiSheDi,PaiSheDiAdmin)
+
+class ChuanBangAdmin(object):
+    list_display = ['film','xiangqing']
+    search_fields = ['film','xiangqing']
+    list_filter = ['film','xiangqing']
+
+xadmin.site.register(ChuanBang,ChuanBangAdmin)
+
