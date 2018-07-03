@@ -93,9 +93,9 @@ class PaiSheDiAdmin(object):
 xadmin.site.register(PaiSheDi,PaiSheDiAdmin)
 
 class ChuanBangAdmin(object):
-    list_display = ['film','xiangqing']
-    search_fields = ['film','xiangqing']
-    list_filter = ['film','xiangqing']
+    list_display = ['film','category','xiangqing']
+    search_fields = ['film','category','xiangqing']
+    list_filter = ['film','category','xiangqing']
 
 xadmin.site.register(ChuanBang,ChuanBangAdmin)
 

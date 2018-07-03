@@ -86,11 +86,11 @@ class ImdbSpider(scrapy.Spider):
         # meta={'film_name': ename})
 
         # 拍摄地+拍摄日期--ok
-        #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/locations', callback=self.locations,
-                             #meta={'film_name': ename})
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/locations', callback=self.locations,
+        # meta={'film_name': ename})
 
         # 穿帮
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/goofs', callback=self.locations,
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/goofs', callback=self.goofs,
                              meta={'film_name': ename})
 
     # 逐个翻译电影分类，返回一个带格式的字符串
@@ -107,6 +107,7 @@ class ImdbSpider(scrapy.Spider):
             trans_list.append(category_name)
 
         return ','.join(trans_list)
+
     # 摘要+剧情
     def plotsummary(self, response):
         film_name = response.meta['film_name']
@@ -120,13 +121,14 @@ class ImdbSpider(scrapy.Spider):
         juqing = response.xpath('//ul[@id="plot-synopsis-content"]/li[@class="ipl-zebra-list__item"]').extract_first()
         juqing = html2text.html2text(juqing)
         FM.Info.objects.filter(ename=film_name).update(juqing=juqing)
-    #拍摄地+日期
-    def locations(self,response):
+
+    # 拍摄地+日期
+    def locations(self, response):
         film_name = response.meta['film_name']
-        psd_list=response.xpath('//section[@id="filming_locations"]/div[contains(@class,"soda")]').extract()
+        psd_list = response.xpath('//section[@id="filming_locations"]/div[contains(@class,"soda")]').extract()
         for li in psd_list:
-            address=Selector(text=li).xpath('//dt/a/text()').extract_first()
-            changjing=Selector(text=li).xpath('//dd/text()').extract_first()
+            address = Selector(text=li).xpath('//dt/a/text()').extract_first()
+            changjing = Selector(text=li).xpath('//dd/text()').extract_first()
 
             FM.PaiSheDi.objects.create(
                 film=film_name,
@@ -134,8 +136,9 @@ class ImdbSpider(scrapy.Spider):
                 changjing=changjing,
             )
 
-        paisheriqi=response.xpath('//section[@id="filming_dates"]/ul/li/text()').extract_first()
+        paisheriqi = response.xpath('//section[@id="filming_dates"]/ul/li/text()').extract_first()
         FM.Info.objects.filter(ename=film_name).update(paisheriqi=paisheriqi)
+
     # 译名+发布国家/日期
     def releaseinfo(self, response):
         film_name = response.meta['film_name']
@@ -176,6 +179,7 @@ class ImdbSpider(scrapy.Spider):
                     guojia=guojia,
                     name=yiming,
                 )
+
     # 整个制作团队（导演，编剧，演员……）
     def fullcredits(self, response):
         film_name = response.meta['film_name']
@@ -268,7 +272,22 @@ class ImdbSpider(scrapy.Spider):
                         beizhu=beizhu
                     )
 
-    #穿帮镜头
-    def goofs(self,response):
+    # 穿帮镜头
+    def goofs(self, response):
+        film_name = response.meta['film_name']
 
-        pass
+        jumpto_list = response.xpath('//div[@class="jumpto"]/a/text()').extract()
+        for li in jumpto_list:  # li就是穿帮的类型了
+            # count是此穿帮类型下，穿帮的数量
+            count = response.xpath(
+                '//div[@class="jumpto"]/a[contains(text(),"' + li + '")]/following-sibling::text()').extract_first()
+            count = re.findall('\d+', count)[0]
+            xq_list = response.xpath('//h4[contains(text(),"' + li + '")]/following-sibling::div').extract()[
+                      0:int(count)]
+            for xq in xq_list:
+                xq_content=Selector(text=xq).xpath('//div[@class="sodatext"]/text()').extract_first()
+                FM.ChuanBang.objects.create(
+                    film=film_name,
+                    category=li,
+                    xiangqing=xq_content,
+                )
