@@ -1,9 +1,9 @@
 import xadmin
-from .models import Comments
+from .models import FilmComments
 
-class CommentsAdmin(object):
-    list_display=['content']
-    search_fields=['content']
-    list_filter=['content']
+class FilmCommentsAdmin(object):
+    list_display=['content','film','add_time']
+    search_fields=['content','film','add_time']
+    list_filter=['content','film','add_time']
 
-xadmin.site.register(Comments,CommentsAdmin)
+xadmin.site.register(FilmComments,FilmCommentsAdmin)

@@ -2,8 +2,10 @@
 import scrapy
 import html2text
 from film import models as FM
+from comment import models as CM
 import re
 from scrapy.selector import Selector
+import requests
 
 
 class ImdbSpider(scrapy.Spider):
@@ -89,9 +91,13 @@ class ImdbSpider(scrapy.Spider):
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/locations', callback=self.locations,
         # meta={'film_name': ename})
 
-        # 穿帮
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/goofs', callback=self.goofs,
-                             meta={'film_name': ename})
+        # 穿帮--ok
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/goofs', callback=self.goofs,
+        #                      meta={'film_name': ename})
+
+        # 用户评论--ok
+        #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/reviews', callback=self.reviews,
+                             #meta={'film_name': ename, 'data-ajaxurl': ''})  # 'data-ajaxurl'最开始地时候是赋予空值
 
     # 逐个翻译电影分类，返回一个带格式的字符串
     def trans_category(self, category_list):
@@ -285,9 +291,29 @@ class ImdbSpider(scrapy.Spider):
             xq_list = response.xpath('//h4[contains(text(),"' + li + '")]/following-sibling::div').extract()[
                       0:int(count)]
             for xq in xq_list:
-                xq_content=Selector(text=xq).xpath('//div[@class="sodatext"]/text()').extract_first()
+                xq_content = Selector(text=xq).xpath('//div[@class="sodatext"]/text()').extract_first()
                 FM.ChuanBang.objects.create(
                     film=film_name,
                     category=li,
                     xiangqing=xq_content,
                 )
+    #电影评论
+    def reviews(self, response):
+        film_name = response.meta['film_name']
+        data_ajaxurl = response.meta['data-ajaxurl']
+        # <div class="load-more-data" data-key="fqcavm4i2jhknxl2aqshhc4qqloiff4blygkdnmgqufie5q7nt257gcbtnecfy6gygunmfmoyyw3o" data-ajaxurl="/title/tt1300854/reviews/_ajax?sort=helpfulnessScore&dir=desc">
+        data_key = response.xpath('//div[@class="load-more-data"]/@data-key').extract_first()
+        if data_ajaxurl == '':
+            data_ajaxurl = response.xpath('//div[@class="load-more-data"]/@data-ajaxurl').extract_first()
+
+        lister_list = response.xpath('//div[contains(@class,"text show-more__control")]/text()').extract()
+
+        for lister in lister_list:
+            CM.FilmComments.objects.create(
+                film=film_name,
+                content=lister,
+            )
+        if len(lister_list) > 0:
+            yield scrapy.Request(
+                url='https://www.imdb.com%s?sort=helpfulnessScore&dir=desc&ref_=undefined&paginationKey=%s' % (
+                    data_ajaxurl, data_key), callback=self.reviews, meta={'film_name': film_name, 'data-ajaxurl': data_ajaxurl})
