@@ -99,6 +99,10 @@ class ImdbSpider(scrapy.Spider):
         #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/reviews', callback=self.reviews,
                              #meta={'film_name': ename, 'data-ajaxurl': ''})  # 'data-ajaxurl'最开始地时候是赋予空值
 
+        # 用户评论--ok
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/trivia', callback=self.trivia,
+                             meta={'film_name': ename})
+
     # 逐个翻译电影分类，返回一个带格式的字符串
     def trans_category(self, category_list):
         trans_list = []
@@ -317,3 +321,15 @@ class ImdbSpider(scrapy.Spider):
             yield scrapy.Request(
                 url='https://www.imdb.com%s?sort=helpfulnessScore&dir=desc&ref_=undefined&paginationKey=%s' % (
                     data_ajaxurl, data_key), callback=self.reviews, meta={'film_name': film_name, 'data-ajaxurl': data_ajaxurl})
+
+    #幕后花絮
+    def trivia(self,response):
+        film_name=response.meta['film_name']
+        huaxu_list=response.xpath('//div[@class="sodatext"]').extract()
+        for huaxu in huaxu_list:
+            huaxu=html2text.html2text(huaxu)
+            huaxu=re.sub('\(\/name\/.+?\)|\(\/title\/.+?\)','',huaxu)
+            FM.HuaXu.objects.create(
+                film=film_name,
+                huaxu=huaxu,
+            )

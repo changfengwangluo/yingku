@@ -234,3 +234,15 @@ class ChuanBang(models.Model):
 
     def __str__(self):
         return self.xiangqing
+
+# 花絮
+class HuaXu(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    huaxu = models.CharField(verbose_name='花絮', max_length=255, default='')
+
+    class Meta:
+        verbose_name = '花絮'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.huaxu
