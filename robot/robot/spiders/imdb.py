@@ -103,7 +103,7 @@ class ImdbSpider(scrapy.Spider):
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/trivia', callback=self.trivia,
         #                      meta={'film_name': ename})
         # 问答
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/faq', callback=self.trivia,
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/faq', callback=self.faq,
                              meta={'film_name': ename})
 
     # 逐个翻译电影分类，返回一个带格式的字符串
@@ -339,11 +339,19 @@ class ImdbSpider(scrapy.Spider):
                 huaxu=huaxu,
             )
 
-    # 幕后花絮
+    # 问答
     def faq(self, response):
         film_name = response.meta['film_name']
-        faq_list=response.xpath('//section[@id,"faq-answered"]/ul/li').extract()
+        faq_list=response.xpath('//section[@id="faq-answered"]/ul/li').extract()
 
         for faq in faq_list:
-            question=Selector(text=faq).xpath('')
-            pass
+            question=Selector(text=faq).xpath('//div[@class="faq-question-text"]/text()').extract_first()
+            anwser=Selector(text=faq).xpath('//section/div[last()]/p').extract_first()
+            anwser=html2text.html2text(anwser)
+            anwser = re.sub('\(\/name\/.+?\)|\(\/title\/.+?\)', '', anwser)
+
+            FM.WenDa.objects.create(
+                film=film_name,
+                wen=question,
+                da=anwser,
+            )
