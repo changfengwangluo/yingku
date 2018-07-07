@@ -1,5 +1,5 @@
 import xadmin
-from .models import Category,Info,Role,HonorCategory,Honor,PiaoFang,ShangYing,GuoJia,YiMing,YanZhiYuan,ZhaiYao,PaiSheDi,ChuanBang,HuaXu
+from .models import Category,Info,Role,HonorCategory,Honor,PiaoFang,ShangYing,GuoJia,YiMing,YanZhiYuan,ZhaiYao,PaiSheDi,ChuanBang,HuaXu,WenDa
 
 class CategoryAdmin(object):
     list_display = ['name']
@@ -106,3 +106,10 @@ class HuaXuAdmin(object):
     list_filter = ['film','huaxu']
 
 xadmin.site.register(HuaXu,HuaXuAdmin)
+
+class WenDaAdmin(object):
+    list_display = ['film','wen','da']
+    search_fields = ['film','wen','da']
+    list_filter = ['film','wen','da']
+
+xadmin.site.register(WenDa,WenDaAdmin)

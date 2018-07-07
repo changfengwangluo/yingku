@@ -96,11 +96,14 @@ class ImdbSpider(scrapy.Spider):
         #                      meta={'film_name': ename})
 
         # 用户评论--ok
-        #yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/reviews', callback=self.reviews,
-                             #meta={'film_name': ename, 'data-ajaxurl': ''})  # 'data-ajaxurl'最开始地时候是赋予空值
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/reviews', callback=self.reviews,
+        # meta={'film_name': ename, 'data-ajaxurl': ''})  # 'data-ajaxurl'最开始地时候是赋予空值
 
         # 用户评论--ok
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/trivia', callback=self.trivia,
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/trivia', callback=self.trivia,
+        #                      meta={'film_name': ename})
+        # 问答
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/faq', callback=self.trivia,
                              meta={'film_name': ename})
 
     # 逐个翻译电影分类，返回一个带格式的字符串
@@ -301,7 +304,8 @@ class ImdbSpider(scrapy.Spider):
                     category=li,
                     xiangqing=xq_content,
                 )
-    #电影评论
+
+    # 电影评论
     def reviews(self, response):
         film_name = response.meta['film_name']
         data_ajaxurl = response.meta['data-ajaxurl']
@@ -320,16 +324,26 @@ class ImdbSpider(scrapy.Spider):
         if len(lister_list) > 0:
             yield scrapy.Request(
                 url='https://www.imdb.com%s?sort=helpfulnessScore&dir=desc&ref_=undefined&paginationKey=%s' % (
-                    data_ajaxurl, data_key), callback=self.reviews, meta={'film_name': film_name, 'data-ajaxurl': data_ajaxurl})
+                    data_ajaxurl, data_key), callback=self.reviews,
+                meta={'film_name': film_name, 'data-ajaxurl': data_ajaxurl})
 
-    #幕后花絮
-    def trivia(self,response):
-        film_name=response.meta['film_name']
-        huaxu_list=response.xpath('//div[@class="sodatext"]').extract()
+    # 幕后花絮
+    def trivia(self, response):
+        film_name = response.meta['film_name']
+        huaxu_list = response.xpath('//div[@class="sodatext"]').extract()
         for huaxu in huaxu_list:
-            huaxu=html2text.html2text(huaxu)
-            huaxu=re.sub('\(\/name\/.+?\)|\(\/title\/.+?\)','',huaxu)
+            huaxu = html2text.html2text(huaxu)
+            huaxu = re.sub('\(\/name\/.+?\)|\(\/title\/.+?\)', '', huaxu)
             FM.HuaXu.objects.create(
                 film=film_name,
                 huaxu=huaxu,
             )
+
+    # 幕后花絮
+    def faq(self, response):
+        film_name = response.meta['film_name']
+        faq_list=response.xpath('//section[@id,"faq-answered"]/ul/li').extract()
+
+        for faq in faq_list:
+            question=Selector(text=faq).xpath('')
+            pass

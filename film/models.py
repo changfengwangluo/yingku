@@ -49,7 +49,8 @@ class Info(models.Model):
     def __str__(self):
         return self.name
 
-#角色
+
+# 角色
 class Role(models.Model):
     name = models.CharField(verbose_name='角色名', max_length=255, default='')
     film = models.CharField(verbose_name='所属电影', max_length=255, default='')
@@ -64,7 +65,8 @@ class Role(models.Model):
     def __str__(self):
         return self.name
 
-#电影奖名称
+
+# 电影奖名称
 class HonorCategory(models.Model):
     name = models.CharField(verbose_name='名称', max_length=255, default='')
 
@@ -75,7 +77,8 @@ class HonorCategory(models.Model):
     def __str__(self):
         return self.name
 
-#电影奖
+
+# 电影奖
 class Honor(models.Model):
     RESULT = (
         ('hj', '获奖'),
@@ -94,7 +97,8 @@ class Honor(models.Model):
     def __str__(self):
         return self.name
 
-#票房
+
+# 票房
 class PiaoFang(models.Model):
     num = models.IntegerField(verbose_name='收入', default='')
     address = models.CharField(verbose_name='国家/地区', max_length=255, default='')
@@ -209,6 +213,7 @@ class YanZhiYuan(models.Model):
     def __str__(self):
         return self.name
 
+
 # 拍摄地
 class PaiSheDi(models.Model):
     film = models.CharField(verbose_name='所属电影', max_length=255, default='')
@@ -221,6 +226,7 @@ class PaiSheDi(models.Model):
 
     def __str__(self):
         return self.name
+
 
 # 穿帮
 class ChuanBang(models.Model):
@@ -235,6 +241,7 @@ class ChuanBang(models.Model):
     def __str__(self):
         return self.xiangqing
 
+
 # 花絮
 class HuaXu(models.Model):
     film = models.CharField(verbose_name='所属电影', max_length=255, default='')
@@ -246,3 +253,19 @@ class HuaXu(models.Model):
 
     def __str__(self):
         return self.huaxu
+
+
+# 问答
+class WenDa(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    wen = models.CharField(verbose_name='问题', max_length=255, default='')
+    da = models.TextField(verbose_name='回答', max_length=255, default='')
+
+    class Meta:
+        verbose_name = '电影问答'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.wen
+
+
