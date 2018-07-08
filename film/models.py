@@ -268,4 +268,42 @@ class WenDa(models.Model):
     def __str__(self):
         return self.wen
 
+# 技术规格暂时没有采集
+class JiShu(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    category = models.CharField(verbose_name='类型', max_length=255, default='')
+    desc = models.TextField(verbose_name='详情', max_length=255, default='')
 
+    class Meta:
+        verbose_name = '技术规格'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.desc
+
+
+# 公司
+class GongSi(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    category = models.CharField(verbose_name='类型', max_length=255, default='')
+    name = models.TextField(verbose_name='公司名及描述', max_length=255, default='')
+
+    class Meta:
+        verbose_name = '支持公司'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+# 家长指南
+class ZhiNan(models.Model):
+    film = models.CharField(verbose_name='所属电影', max_length=255, default='')
+    category = models.CharField(verbose_name='类型', max_length=255, default='')
+    desc = models.TextField(verbose_name='详情', max_length=255, default='')
+
+    class Meta:
+        verbose_name = '家长指南'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.desc

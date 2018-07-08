@@ -103,7 +103,17 @@ class ImdbSpider(scrapy.Spider):
         # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/trivia', callback=self.trivia,
         #                      meta={'film_name': ename})
         # 问答
-        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/faq', callback=self.faq,
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/faq', callback=self.faq,
+        #                      meta={'film_name': ename})
+
+        # 技术规格采集不完整，对用户也作用不大，暂时不采集。
+
+        # 支持公司--ok
+        # yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/companycredits', callback=self.companycredits,
+        #                      meta={'film_name': ename})
+
+        # 支持公司--ok
+        yield scrapy.Request(url='https://www.imdb.com/title/tt0371746/parentalguide', callback=self.parentalguide,
                              meta={'film_name': ename})
 
     # 逐个翻译电影分类，返回一个带格式的字符串
@@ -342,12 +352,12 @@ class ImdbSpider(scrapy.Spider):
     # 问答
     def faq(self, response):
         film_name = response.meta['film_name']
-        faq_list=response.xpath('//section[@id="faq-answered"]/ul/li').extract()
+        faq_list = response.xpath('//section[@id="faq-answered"]/ul/li').extract()
 
         for faq in faq_list:
-            question=Selector(text=faq).xpath('//div[@class="faq-question-text"]/text()').extract_first()
-            anwser=Selector(text=faq).xpath('//section/div[last()]/p').extract_first()
-            anwser=html2text.html2text(anwser)
+            question = Selector(text=faq).xpath('//div[@class="faq-question-text"]/text()').extract_first()
+            anwser = Selector(text=faq).xpath('//section/div[last()]/p').extract_first()
+            anwser = html2text.html2text(anwser)
             anwser = re.sub('\(\/name\/.+?\)|\(\/title\/.+?\)', '', anwser)
 
             FM.WenDa.objects.create(
@@ -355,3 +365,94 @@ class ImdbSpider(scrapy.Spider):
                 wen=question,
                 da=anwser,
             )
+
+    # 支持+合作公司
+    def companycredits(self, response):
+        film_name = response.meta['film_name']
+        cg_list = response.xpath('//h4[@class="dataHeaderWithBorder"]/text()').extract()
+        for cg in cg_list:
+            if cg == 'Production Companies':
+                category = '生产公司'
+                id = 'production'
+            elif cg == 'Distributors':
+                category = '分销商'
+                id = 'distributors'
+            elif cg == 'Special Effects':
+                category = '特殊效果'
+                id = 'specialEffects'
+            elif cg == 'Other Companies':
+                category = '其他公司'
+                id = 'other'
+            else:
+                category = ''
+                id = ''
+
+            sc_list = response.xpath('//h4[@id="' + id + '"]/following-sibling::ul[1]/li').extract()
+            for sc in sc_list:
+                name = Selector(text=sc).xpath('string(.)').extract_first()
+                name = re.sub('\n', '', name).strip()
+                name = re.sub('\s{2,}', ' ', name).strip()
+
+                FM.GongSi.objects.create(
+                    film=film_name,
+                    category=category,
+                    name=name
+                )
+
+    # 家长指南(政治/色情/暴力等少儿不宜内容)
+    def parentalguide(self, response):
+        film_name = response.meta['film_name']
+        # 电影评级
+        mpaa = response.xpath('//*[@id="mpaa-rating"]/td[2]/text()').extract_first()  # imdb的总体评级
+        FM.ZhiNan.objects.create(
+            film=film_name,
+            category='IMDB评级',
+            desc=mpaa,
+        )
+        Certification = response.xpath('//*[@id="certifications-list"]/td[2]/ul/li').xpath(
+            'string(.)').extract()  # 各个国家/地区地评级详情
+
+        for cc in Certification:
+            cc = re.sub('\n', '', cc)
+            cc = re.sub('\s{2,}', ' ', cc)
+
+            FM.ZhiNan.objects.create(
+                film=film_name,
+                category='国家/地区评级',
+                desc=cc,
+            )
+
+        desc_name_list = response.xpath(
+            '//section[contains(@id,"advisory")]/@id').extract()#这里要根据id来做,下面的代码需要做一定地修改
+
+        for desc_name in desc_name_list:
+            if desc_name == 'Sex & Nudity':
+                category = '性与裸体'
+                id = 'advisory-nudity'
+            elif desc_name == 'Violence & Gore':
+                category = '暴力与血腥'
+                id = 'advisory-violence'
+            elif desc_name == 'Profanity':
+                category = '亵渎'
+                id = 'advisory-profanity'
+            elif desc_name == 'Alcohol, Drugs & Smoking':
+                category = '酒精/毒品/吸烟'
+                id = 'advisory-alcohol'
+            elif desc_name == 'Frightening & Intense Scenes':
+                category = '惊恐场面'
+                id = 'advisory-frightening'
+            else:
+                id = 'advisory-spoilers'#剧透
+
+            desc_list = response.xpath(
+                '//section[@id="' + id + '"]/ul/li[@class="ipl-zebra-list__item"]/text()').extract()
+
+            for desc in desc_list:
+                desc = re.sub('\n', '', desc)
+                desc = re.sub('\s{2,}', ' ', desc)
+                if desc != ' ':
+                    FM.ZhiNan.objects.create(
+                        film=film_name,
+                        category=category,
+                        desc=desc,
+                    )
